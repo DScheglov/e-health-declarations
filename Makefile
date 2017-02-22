@@ -3,9 +3,6 @@ IMAGE := dscheglov/e-health-patient-decl
 DB_SVR := mongodb-server
 PORT_MAP := 80:8888
 
-conf:
-  cp ./config/config.dev.js ./config/config.prod.js
-
 drop:
 	docker rm -f $(PROJECT)
 
