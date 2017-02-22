@@ -63,7 +63,7 @@ const DeclarationSchema = new mongoose.Schema({
         type: String,
         required: true,
         description: 'Plain text of personalized declaration that is signed'
-      }
+      },
       data: {
         type: String,
         pattern: /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/,
