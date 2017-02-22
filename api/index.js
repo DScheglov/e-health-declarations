@@ -7,7 +7,7 @@ const models = require('../models');
 const api = new merest.ModelAPIExpress({
   title: config.apiTitle,
   path: config.apiPath,
-  host: `${config.host}:${config.port}`,
+  host: `${config.host}:${config.apiPort || config.port}`,
   options: false
 });
 

@@ -1,2 +1,3 @@
 FROM node:6-onbuild
-EXPOSE 8083
+ENV NODE_ENV production
+EXPOSE 8088
