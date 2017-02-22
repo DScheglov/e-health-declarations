@@ -8,5 +8,5 @@
 /pinguin/
 *.log
 /local/
-*/host.json
+**/host.json
 coveralls.sh
