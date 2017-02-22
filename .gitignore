@@ -1,0 +1,12 @@
+/node_modules/
+/fictures/
+.project
+.settings
+.vscode
+/coverage/
+/admin/
+/pinguin/
+*.log
+/local/
+*/host.json
+coveralls.sh

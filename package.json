@@ -1,0 +1,29 @@
+{
+  "name": "e-health-declarations",
+  "version": "0.0.1",
+  "description": "e-health registry of patient's declarations",
+  "main": "server.js",
+  "scripts": {
+    "test-loc": "NODE_ENV=test istanbul cover _mocha -- -R spec",
+    "test": "./test.sh"
+  },
+  "keywords": [
+    "e-health",
+    "patient",
+    "doctor"
+  ],
+  "author": "Dmitry Scheglov <Dmitry.Scheglov@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "express": "^4.14.1",
+    "merest": "^1.2.1",
+    "merest-swagger": "^1.0.4",
+    "method-override": "^2.3.7",
+    "mongoose": "^4.8.4"
+  },
+  "devDependencies": {
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0"
+  }
+}
