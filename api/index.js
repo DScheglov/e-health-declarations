@@ -14,7 +14,7 @@ const api = new merest.ModelAPIExpress({
 api.expose(models.Declaration, {
   queryFields: { },
   search: {
-    fields: '-signature -data'
+    fields: '-signature -images'
   },
   options: false
 });

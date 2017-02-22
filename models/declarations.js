@@ -1,6 +1,8 @@
 'use strict';
 
 const mongoose = require('mongoose');
+const SignedContentSchema = require('./schemas/signed-content');
+const ContentSchema = require('./schemas/content')
 
 const STATUSES = [
   'draft',          // the new version of declaration
@@ -37,11 +39,11 @@ const DeclarationSchema = new mongoose.Schema({
     required: true,
     description: 'Unique resource name of Doctor'
   },
-  partyUrn: {
+  contractUrn: {
     type: String,
     pattern: /[0-9a-fA-F]{16, 32}/,
     required: true,
-    description: 'Unique resource name of the Party should be reinbursed'
+    description: 'Unique resource name of the Reinbursment contract'
   },
   scope: {
     type: String,
@@ -58,31 +60,12 @@ const DeclarationSchema = new mongoose.Schema({
     'default': STATUSES[0]
   },
   signature: {
-    type: {
-      signedData: {
-        type: String,
-        required: true,
-        description: 'Plain text of personalized declaration that is signed'
-      },
-      data: {
-        type: String,
-        pattern: /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/,
-        required: true,
-        description: 'The base64 encoded date of e-signature'
-      },
-      signatoryUrn: {
-        type: String,
-        pattern: /[0-9a-fA-F]{16, 32}/,
-        required: true,
-        description: 'Unique resource name of the Party accept the Declaration'
-      }
-    },
-    description: 'The signature of plain text declaration made by Party that accept the Declaration from Patient'
+    type: SignedContentSchema,
+    description: 'The signed plain text declaration made by Party that accept the Declaration from Patient'
   },
-  data: {
-    type: String,
-    pattern: /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/,
-    description: 'The base64-encoded data with scan/photo of Declaration document'
+  images: {
+    type: [ ContentSchema ],
+    description: 'The array of base64-encoded data with scan/photo of Declaration document'
   },
   statusDate: {
     type: Date, 'default': Date.now,
@@ -90,7 +73,7 @@ const DeclarationSchema = new mongoose.Schema({
   },
   actualSince: {
     type: Date,
-    description: 'The date-time when the Declaration has become to be actual' },
+    description: 'The date-time when the Declaration has become actual' },
   actualTo: {
     type: Date,
     description: 'The date-time when the Declaration shoud or has become to be closed or prolongated'
